@@ -137,16 +137,17 @@ book was self-consistently wrong.
 ## Credits and licensing
 
 The `.plan` text is **John Carmack's work**, reproduced verbatim. It is included here
-for reading and preservation; no ownership is claimed over it.
+for reading and preservation; no ownership is claimed over it, and nothing in this
+repository grants a licence to it.
 
-The entries come from the [.plan archive on
-floodyberry.com](http://floodyberry.com/carmack/plan.html), by way of the day-by-day
-mirror of the same.
+The `by_day/` files come from **[ESWAT/john-carmack-plan-archive](https://github.com/ESWAT/john-carmack-plan-archive)**,
+which in turn mirrors the [.plan archive on
+floodyberry.com](http://floodyberry.com/carmack/plan.html). Thanks to both for keeping
+the text available.
 
 [Fira Code](https://github.com/tonsky/FiraCode) is used under the SIL Open Font License
 1.1 — see `fonts/README.md`.
 
-> **To decide:** this repository has no `LICENSE` file yet. A licence would sensibly
-> cover the build scripts and the editorial summaries only, since the `.plan` text is
-> not the maintainer's to relicense. Consider MIT for the code, and a note that the
-> archived text remains Carmack's.
+Everything written for this edition — the two scripts, the CI workflow, the 394
+per-entry summaries and the year introductions — is MIT licensed. See
+[`LICENSE`](LICENSE), which sets out that split explicitly.

@@ -32,7 +32,17 @@ jobs:
       - name: Install librsvg (renders the cover)
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends librsvg2-bin
+          sudo apt-get install -y --no-install-recommends librsvg2-bin fontconfig
+
+      - name: Make the vendored fonts visible to fontconfig
+        # rsvg resolves the cover's font through fontconfig, not through the
+        # repo. Without this the runner has no Fira Code and silently falls
+        # back to DejaVu Sans Mono, producing a cover that is not the design.
+        run: |
+          mkdir -p ~/.local/share/fonts
+          cp fonts/*.ttf ~/.local/share/fonts/
+          fc-cache -f
+          fc-match "Fira Code"
 
       - name: Build
         run: python3 build_epub.py

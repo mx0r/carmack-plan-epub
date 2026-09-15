@@ -590,6 +590,16 @@ def build_cover(count: int) -> bool:
     with open(svg_path, "w", encoding="utf-8") as fh:
         fh.write(svg)
     try:
+        # rsvg picks the cover font via fontconfig; warn loudly if the real
+        # face is missing rather than shipping a silent fallback.
+        try:
+            got = subprocess.run(["fc-match", "-f", "%{family}", "Fira Code"],
+                                 capture_output=True, text=True, check=True).stdout
+            if "fira code" not in got.lower():
+                print(f"  ! cover font fallback: 'Fira Code' resolved to {got!r}",
+                      file=sys.stderr)
+        except (FileNotFoundError, subprocess.CalledProcessError):
+            pass                                  # no fontconfig; nothing to check
         subprocess.run(["rsvg-convert", "-w", "1400", "-h", "2100",
                         "-o", png_path, svg_path], check=True,
                        capture_output=True)
@@ -759,9 +769,10 @@ COLOPHON = """<section class="plate" epub:type="colophon">
 <h1 class="page-title">Colophon</h1>
 <p>Set in Iowan Old Style, with Fira Code for all monospaced text. Fira Code is
 used under the SIL Open Font License 1.1.</p>
-<p>Text from the John Carmack <span class="mono">.plan</span> archive
-maintained at <span class="mono">floodyberry.com/carmack/plan.html</span>,
-by way of the day&#8209;by&#8209;day mirror of the same.</p>
+<p>Text from the day&#8209;by&#8209;day <span class="mono">.plan</span> archive at
+<span class="mono">github.com/ESWAT/john-carmack-plan-archive</span>, which
+mirrors the original collection at
+<span class="mono">floodyberry.com/carmack/plan.html</span>.</p>
 <p class="note">The .plan files are the work of John Carmack. This edition adds
 only typesetting and the editorial summary lines.</p>
 </section>"""
