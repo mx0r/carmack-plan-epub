@@ -1,0 +1,394 @@
+19960218	Qtest-era polish: gib deaths, damage direction, and a scoreboard still to come
+19960219	Underwater bugs, players getting stuck, and a respawn cleanup
+19960220	Rewriting sound packet communication and shoring up pak file support
+19960221	A frag bar, better prediction bounding, and the first NaN impact-time crashes
+19960222	Sound goes back to origin-based, plus alias backpack and armor models
+19960223	Trigger waits, crushing fixes, and swimming direction work
+19960224	QTest1 ships, the release marked in the middle of an ordinary day's list
+19960225	Emitting BSP files, while low-gravity gibs get stuck in walls
+19960226	Ogre sounds, and turning 180s left so ogres drag their victims correctly
+19960227	Expanding qbsp to 32-bit edges and faces, with an audible sigh
+19960228	Air acceleration and freelook, and a question about hostile monsters
+19960229	Air acceleration raised, and a strange fall-out-of-level bug
+19960301	A ping command, respawning items, and time warp on overloaded servers
+19960302	A single line: the SGI test demo is written
+19960303	Health capped at 250, and doubts about 256-angle quantization
+19960304	The new internet code runs; entity models vanish from underneath
+19960305	Zombies and the dog arrive, and health becomes a short to fix negative numbers
+19960306	All network play issues fixed, and a long list of monster combat work
+19960307	Raising qbsp portal limits and testing GL on NT
+19960308	Keys, dropped ammo, and monsters that see farther
+19960309	A network dump mode, demon work, and finally giving DEC a quote
+19960310	Fixing the static-object update bomb and the crazy speed guys
+19960311	Deathmatch backpacks and a monster-sighting PVS problem
+19960312	The new alias model code sort of works
+19960313	BoxOnPlaneSide optimized and the progs.dat structure crunched down
+19960314	New trigger code with delay support
+19960315	An execution stack for progs, and a plea to fix the NaNs
+19960316	Edge friction, damaging trains, and loading pacifiers
+19960317	Triggered trains, and the sound code work begins
+19960318	Switchable lights and sounder objects; spiral the view when gibbed
+19960319	Switchable lights land, trailed by a long list of monster and water wishes
+19960320	Drowning damage, and color comes to QuakeEd's entities
+19960321	Two QuakeEd fixes, and a reminder to draw the id trademark graphic
+19960322	The "wait" command arrives, making scripted bind chains possible
+19960323	Demo code finished, and angles interpolated for low update connections
+19960324	Level-to-level transitions, and worries about pathname security in savegames
+19960327	Explosions and melee attacks stop passing through walls
+19960328	Torch light casting fixed, and stereo still isn't right
+19960330	Dynamic lights on the list, and the first sketch of floating Esc menus
+19960331	Edicts become pointers, and a byte-order bug in qcc
+19960401	Coop play allowed, and $flags added to models for client-side effects
+19960402	Leading the target: averaging monster velocity for aiming
+19960403	func_wall replaces the deathmatch-only flags, and auto aiming sucks
+19960404	A short list, headed by a broken teleport flash
+19960405	Sound loop points, and a DOS build that hangs overnight
+19960406	Thinking out loud about PVS line-of-sight checks and swooping AI movement
+19960407	Two fixes: teleport fog, and entity removal over the net
+19960408	The Aim() time sink identified, and the new clipping code running
+19960409	A +precache option to speed WAN loading, and loop lengths for sounds
+19960410	The second clipping hull is finished
+19960411	Damage through walls fixed, and a very long list of everything else
+19960412	Away at Raven
+19960413	Still at Raven
+19960414	Modelgen learns to pack multiple models into one file
+19960415	trigger_counter and toggling doors, plus dog frames and assorted gibs
+19960416	Demon jumping reworked, zombies stand up properly, and a pause icon appears
+19960418	New BSP portalization: 20% faster on a fifth of the memory
+19960419	Zombies stop popping out of graves, and animating textures arrive
+19960420	The hell knight, and dynamic lights finally land
+19960421	Jumping out of water, debounced, and missile clipping tidied up
+19960423	Network updates go PVS-specific, and a first question about lag compensation
+19960424	Muzzle flashes, and the overnight hang traced to the sound mixing loop
+19960425	Sound loading and mixing rewritten from scratch
+19960426	The axe arrives, and slow motion above 72 Hz is fixed
+19960427	Arbitrary texture axes pushed through every one of the utilities
+19960429	Light sampling fixed for all rotations, and objects stop clipping their owners
+19960430	A "give" command for testing, and new swimming code
+19960501	qcc becomes fully recursive, and sound decimates itself to fit memory
+19960502	Shootable buttons, and video mode allocation that fails soft
+19960503	New caching code, and a very long list of monster and level complaints
+19960504	Alias models cached dynamically, and the surface cache pinned to a fixed size
+19960505	All the memory between the hunks becomes dynamic cache
+19960506	Mouse buttons get proper key names, and monsters hold still at point-blank range
+19960507	vis made 30% faster, and all the hell knight's actions finished
+19960508	The blob appears, and entity updates get new bit coding
+19960509	Door targeting untangled, and new light sample point determination
+19960510	A new main menu, and everything splashes on entering water
+19960511	Dog leaping, wizard death frames, and keyboard pitch aiming aids
+19960512	A hack around the sticky corner problem, and the sound mixer optimized
+19960513	killtarget, savegame versioning, and automatic ambient sounds
+19960514	Directional touch triggers, and the id1 development trees merged
+19960515	Powerup colors and icons, and a lint pass over qbsp, light and vis
+19960518	A QuakeEd cleanup day, with DOS carriage returns still ruining the NeXT tools
+19960520	The ogre's chainsaw side swing, plus snd_show for debugging
+19960521	Passage research, and a master volume cvar to post-scale all sound
+19960522	Mouse configuration finished: m_pitch, m_yaw, m_forward, m_side and filtering
+19960523	The body queue fixed, and client-side alias animations from Michael
+19960524	End-of-level handling, and a wishlist far longer than the day's work
+19960525	Monsters learn to notice each other's injuries
+19960526	The finale, and outside sky fragments flood-filled out of the BSP files
+19960527	Ambient sound calculation moves into vis, and the shareware build splits off
+19960528	File writes locked to the game directory to close security holes
+19960529	Automatic pak loading, and the DOS savegame crash killed
+19960530	A colored light gel demo, and -minmemory for testing the low end
+19960531	Save games become slots, and push triggers become frame-rate independent
+19960601	Nightmare skill, options menu sliders, and gamma moved out of the video code
+19960602	Fish stay in the water, and the new CD code is merged
+19960603	Sigils and episode gates, and groundwork for server transitions
+19960604	Client state simplified, and longer text messages allowed in entities
+19960605	Coop is mostly working: telefrags, respawns and colors that follow you
+19960606	A fat-PVS bug that drew the entire world, and items that fire targets
+19960607	Status bar faces, trigger_relay, and damage accumulated so shotguns can gib
+19960608	The options checkboxes land, along with end-of-episode text
+19960609	The boss can only be hurt by lightning, and nightmare mode gets crueler
+19960610	Beta 3 CDs burned, with three levels of screen update
+19960611	The vis portalization order problem, finally fixed
+19960612	Deathmatch invisibility working, and sound buffers capped at 4k
+19960613	A network start menu, and K_ dropped from the key names
+19960614	Stuttering on dropped packets fixed, and reliable gibs from rockets
+19960615	Cheat-capable cvars locked down for deathmatch, and axe swings randomized
+19960616	All the help screens, reliable datagrams, and telefrag sizing bugs
+19960617	Final character animations, pak CRCs, and proof-of-purchase verification
+19960618	A big hack to catch the rare stuck cases, and unbindall
+19960619	The 0.9 shareware release candidate is built
+19960620	Shareware release day: fish do damage, and persistent servers get samelevel
+19960701	Quake ships, with a roadmap: source releases, win32, 3D boards, radiosity
+19960802	The New Plan: QuakeWorld, a master server, and global player rankings
+19960808	Romero is gone from id, and there will be no more grandiose statements
+19960810	Lesson learned: simulating 300 ms on the client side is out of the question
+19960812	The Prey team leaves 3D Realms to work with Quake technology as Hipnotic
+19960813	Considering more friction in QuakeWorld, for precision over wide-area links
+19960817	Remote server administration lands. And a third snapped input shaft, at 2am
+19960818	Packet filtering: banning by address, by subnet, or by user id
+19960822	The Rendition-accelerated Quake looks very good, and beats software everywhere
+19960827	A radiosity solution: surfaces emit light, and it flows around corners
+19960903	qcc made four times faster by one change to how defs are searched
+19960910	Console improvements, message levels, and the question of who owns a skin
+19960913	A 1.05 beta and fresh utility source on the FTP site
+19960918	The QuakeWorld beta begins, and the latency reductions are real
+19960922	Back from New York, and QuakeWorld works on about half the Windows machines
+19961014	A quiet week spent on the utilities and the editor
+19961016	Rendition's new drivers answer the Windows performance complaint
+19961106	Quake ported to OpenGL over a weekend, then cornered by the level designers
+19961123	A status sweep across every port, and a rant at Matrox about alpha blending
+19961213	Setting the record straight on Intergraph versus SGI, card by card
+19961217	QuakeWorld goes live, reaches 4000 users, and the master server explodes
+19961221	Apple buys NeXT, and that really brightened the day
+19961223	The soapbox: Direct3D Immediate Mode is a horribly broken API
+19970112	Zoid takes charge of the Unix ports
+19970122	A preliminary GLQuake and 3dfx driver, revised an hour later
+19970125	Two GLQuake bugs, found by the Goats and Rangers demos
+19970131	An F40 bought instead of a sensible car, and a Ferrari to be given away
+19970205	Clarifying the Ferrari tournament, and how to cut the field down to size
+19970213	Open questions on UDP header compression and modems tuned for low latency
+19970218	The Ferrari will go to the winner of the Intergraph tournament at E3
+19970219	QuakeWorld scalability fixed, and the player limit raised to 32
+19970223	A day at the track, and a plan to fold software, GL and Verite into one binary
+19970305	An Origin 2000 arrives, a model painting tool is written, and Quake eyes the N64
+19970311	A new GLQuake for the Hipnotic and Rogue packs
+19970312	Hate mail over the US-only contest rules, and why it can't be made fair
+19970313	Weighing the end of QuakeC: a game DLL would be faster, but not portable
+19970318	The DLL decision holds, followed by a frank ranking of every platform
+19970323	Someone hit the F40 in a parking lot and drove off
+19970402	Second-generation QuakeWorld ships, with packets about as small as they get
+19970404	The status bar no longer scales in OpenGL. You can stop complaining now
+19970408	Instanced brush models lose their clipping hulls in the next engine
+19970409	Asking whether anyone still uses lookstrafe or the keyboard look modifier
+19970424	Building the BSP tree from volumes instead of polygons, skipping CSG entirely
+19970428	The 3D Realms deal, and why two different visions of design can coexist
+19970506	Brian Hook joins id
+19970512	No Glide port: every extra codepath holds back future innovation
+19970514	A stolen weekend spent porting Quake to Rhapsody, demoed at Apple's WWDC
+19970522	Breaking compatibility for good, and what the new BSP format buys
+19970619	Quake 2 at E3, and a eureka: radiosity math governs sound as well as light
+19970622	E3, and Thresh: there are master players, and then there is Thresh
+19970625	Sixteen R10000s, a scalability table, and the absurd price of big iron
+19970703	Microsoft kills the OpenGL MCD driver model for Windows 95
+19970707	On bugs, tradeoffs, and why id's programming team has to stay very small
+19970711	Re-reading The Mythical Man-Month, twenty years old and still exactly right
+19970725	id Software goes to the drag strip, with everyone's best times
+19970730	quake2 +set maxclients 200, and what a two-hundred-player game would need
+19970805	At SIGGRAPH, with a short list of editor and tools work
+19970806	Texture directories in qe4, and alpha colors hacked for weaker cards
+19970807	Notes toward texture animation in the BSP, and a reminder to use monsterclips
+19970808	Origin brush support added to the old BSP format for Raven
+19970809	The BSP tools merged, and the first "trinity" ideas about volumetric light
+19970810	A SIGGRAPH talk Miyamoto missed, and hours agonizing over animation chains
+19970811	Mist contents, and a note about a fifth control axis for the SpaceOrb
+19970812	Editor conveniences: command-line projects, face selection, regioned brushes
+19970813	Cinematic state handling, and a long list of things the game DLL should own
+19970814	Intermission spots, and the beginnings of a HUD transfer framework
+19970815	Server and progs commands unified, and a 100% viewsize float bug worked around
+19970816	An open list of questions about how demo servers ought to behave
+19970817	Demo view angles, and disconnect made to kill the server too
+19970818	The DOOM source release: the plan, the sound-code problem, and public domain
+19970819	Two lines: leaktest, and clamping the minimum extents
+19970823	Cluster code, and a note to stop loading the map twice
+19970824	qe4 startup time, and work on qrad
+19970825	An apology for attacks on competitors in .plan files, and the water BSP bug fixed
+19970826	Better bob timing, and a face separation overrun bug
+19970827	An off-by-one in the cluster count, and pitch that shifts as you fall
+19970828	Entity culling in GL, and bevels sorted on every brush
+19970829	Sick
+19970830	Cinematics over the console, and the idea of radiosity for sound clusters
+19970831	The game DLL found by search path, and the help computer
+19970901	A stack bug in the initial lightmaps, and a note on proper biped walking
+19970902	Trinity notes: compressed mip levels, texture packing, speculative uploads
+19970903	A teleport spawn timing bug, and a full page of physics annoyances
+19970904	An MCD alpha-test workaround, plus gl_finish and gl_dynamic
+19970905	Look up and down to exactly ninety degrees
+19970907	Deltas merged with baselines, and multiple model entities
+19970908	Win32-isms pulled out of the sound mixer, and DirectSound locks optimized
+19970909	Textures freed on GL shutdown, and a list of window management bugs
+19970910	maxplayers becomes dynamic, and the player model is no longer always precached
+19970911	cddir, and a reminder not to use VirtualAlloc
+19970912	Save-game tagging, and what the server should expose to the game
+19970913	Designing the savegame model: what gets archived when a level is left
+19970914	The areaportal design worked out in full: areas, flood fill, SetPortalState
+19970915	Cinematic paking, and the alt key stuck down after alt-enter
+19970916	Box sweeping finished, and bonus flashes
+19970917	Editor texture paths, and gamedir made to allow nested quake2 directories
+19970918	A dedicated server, all dash parms removed, and texture paging research
+19970919	Edict allocation moves into the game DLL
+19970920	Dead air conditioning
+19970921	Areaportals work
+19970922	Headnodes done properly, and a wish for more dramatic railgun spray
+19970923	Doors get two areas each, and bmodels get sound origins
+19970924	How areaportals work: lopping off the map irrespective of the PVS
+19970925	Questions about reloading the game DLL, and non-axial triggers
+19970928	A one-line day, and window crunching on Windows 95
+19970929	texpaint gets autosave, and multicast starts using areas
+19970930	A BSP slowdown bug found, and RF_GLOW
+19971001	Config strings arrive, and precache_ is gone
+19971002	Damage summed per frame, and view kicks scaled by remaining health
+19971003	Everything sound gained over Quake 1, and packets held under 1.4k
+19971004	target_speaker and map_noareas
+19971005	Developing for Windows is not fun
+19971006	A larger BSP token length, and a list of sounds still missing
+19971007	Pitch clamped at eighty-nine degrees, and wounded faces on the status bar
+19971008	Entity numbers past 512, and demos working again
+19971009	The packet entity limit removed, and areaportal state saved in savegames
+19971017	Radar-timed runs down an airport runway, and a turbo exploded at 160
+19971019	The Quake 2 test is out, with source to follow the retail release
+19971020	Answering the test feedback, and a plug for Abrash's Black Book
+19971101	Prediction error interpolated, and auto weapon switching off in deathmatch
+19971102	Custom skins, and a bug connecting to a net game while already playing
+19971103	A divide by zero in kickback, plus the kill command and noexit
+19971104	High-res skins, and a long list of cinematic problems
+19971105	The sink-into-plat bug fixed at last
+19971106	Streaming sound fixed on Windows 95, and a multiply removed from the mixer
+19971107	Teleporters, and thinking about turning every event into a temp entity
+19971108	Random respawns by default, and no more telefragging yourself
+19971109	Railgun crashes, and a wishlist that runs from shadows to master servers
+19971110	Playerstate delta, and a grenade bounce that made two sounds
+19971111	Full delta compression, and a huffman bug that appeared with only one token
+19971201	Quake 2 has mastered, and a map of everything that comes next
+19971202	A software project is never finished; plus a warning about fake John Carmacks
+19971209	A heartbeat sent every 300 milliseconds instead of every 300 seconds. Oops
+19971211	The Quake 2 source release is up
+19971223	The DOOM source is up, with notes on what he would do differently now
+19971225	Two prediction bugs found over a bad link: your own missiles were blocking you
+19971227	The 1.07 patch is out
+19971228	A day of timestamped patches, from 2:55 AM to servers that finally stay up
+19971229	On rapid patch releases, and asking why Quake 2 became a hacker target
+19971230	A one-line note: bump GAME_API_VERSION to 2
+19971231	Hours spent with one player, tracing a router that renumbers UDP ports mid-game
+19980101	A new year's resolution to brace every single-line statement
+19980102	Wired checks its facts before printing. How refreshing
+19980103	Hardening the server: challenge/response connections and checksummed moves
+19980104	The 3.10 patch, and a reminder that overclocking really can be the bug
+19980109	Seventy players on one server, until it wedged at full utilization
+19980111	A week alone in a hotel to do research, and the server profiling results
+19980204	The research getaway, and a life catalogued by how much was learned each year
+19980209	Twenty thousand dollars won at blackjack, donated to the Free Software Foundation
+19980212	The state of every 3D card, written for everyone asking about the i740
+19980216	Eight or twelve megabytes on a Voodoo 2, and why it isn't a simple answer
+19980217	Correcting a quote: he is in no position to dismiss Monolith
+19980222	Why fast beta releases beat professional testing, and the cost of porting QC to C
+19980312	American McGee has been let go from id
+19980313	The New Plan: Quake 3, hardware accelerated only, with no software renderer
+19980320	Radiant becomes the Quake 3 editor, with Robert Duffy maintaining it
+19980321	Shutting down the last NEXTSTEP machines, and giving the workstations away
+19980326	How to actually get a feature suggestion taken seriously
+19980402	Drag strip day, with times for every car id and 3D Realms could field
+19980408	A fixed 640x480 virtual screen for Q3, and pleasure at the DOOM source fallout
+19980416	F40 + $465,000 = F50
+19980417	Coding style as archaeology: dating his own source by its braces and comments
+19980422	The F50 against the F40, point by point, ending at the dyno
+19980502	Owning up to the rcon backdoor, and calling it irresponsible
+19980504	Research that led nowhere: lumigraphlets and depth-augmented environment maps
+19980517	Three separate text input implementations in Quake, finally unified
+19980519	A 94-degree day at the strip, with weights, and why weight decides the ET
+19980522	Congratulations to Epic. Unreal looks very good
+19980608	Windows samples the mouse only every 25 ms, and the three modes that result
+19980616	Quake Arena: dropping the single player game to get a purity of focus
+19980704	Why the air movement code should never have changed in Quake 2
+19980705	Flamed from both directions over single player, on consecutive days
+19980716	Rhapsody DR2 is much better, and a first amused look at the MacOS internals
+19980729	The F50 takes twin turbo vitamins: 602 horsepower at the rear wheels
+19980817	Widescreen support in Quake Arena, and the OpenGL case made to Steve Jobs
+19980908	The TNT is just great, and three men in dark suits end the blackjack career
+19980910	A dedicated OpenGL thread on the second processor, defeated by memory bandwidth
+19981014	Funnelling every input through one queue, and the journalling it made possible
+19981103	Mods will be written in interpreted ANSI C, on a virtual RISC-like machine
+19981104	Binary DLLs stay, but only so debuggers can be used
+19981229	Should the virtual machine be allowed to read the whole address space?
+19981230	Sixty-four-bit pointers kill the shortcut, so it has to be done the hard way
+19990110	After the Macworld keynote, an honest assessment of the new G3 hardware
+19990129	Breaking the 8192-unit map limit by snapping coordinates once, at spawn time
+19990303	Railgun rate of fire restored, and why blowout games make for bad design
+19990317	First impressions of the SGI Visual Workstation 320, flat panel and all
+19990424	Why the Q3 test ships on the Mac first, and what Apple did not pay for
+19990425	How to actually measure a platform: control conditions, not evangelism
+19990426	Reading the lagometer, and how to tune rate, snaps and timenudge
+19990427	New sound code to remove latency, and drop shadows on the field characters
+19990428	File, sound and cmodel references converted to range-checked handles
+19990429	Asynchronous client movement, and why other players look jerky
+19990430	A document on optimizing OpenGL drivers for Q3, written for the Linux teams
+19990504	Small fixes, including usercmd overruns that freeze instead of snapping back
+19990505	Item pickups predicted client-side, killing one of the last visible signs of lag
+19990507	Playerstate moves to bit-level fields, and q3map fixes t-junctions at fog
+19990508	Aiming for Sunday evening, and saying plainly that this delay rests on him
+19990509	Release candidates built, with the known issues he chose not to hold up for
+19990510	A good day: everything solid across all three architectures
+19990511	A hundred-dollar bounty for anyone who can crash the test server
+19990512	A strncpy that never zero-terminated, found by the crashtest bounty hunters
+19990519	Back from E3, and dual processor acceleration finally giving twenty percent
+19990522	SMP works, and a clear-eyed account of what threads actually cost you
+19990526	Multiprocessor acceleration ships, with joysticks and a new cheat setup
+19990527	Data cheating protection, and one more shotgun pellet
+19990530	Enjoying Linux at last, and fixing a driver bug by changing two lines of source
+19990603	Hate mail from strafe-jumpers, and the full weapon damage table
+19990627	The awesome example for 3D texture maps, at last: lighting
+19990703	The K7 is faster than the PIII, with the numbers to stand behind it
+19990724	A week of meetings in San Jose, and the virtual machine finished in two days
+19990729	Tournament queuing for spectators, and serverTime sent to stop timescale cheats
+19990730	Why the Mac version slipped, with no conspiracy involved
+19990801	Two stupid errors that made the sky render twice
+19990816	Writing a dynamic code generator by hand, opcode by opcode, and the bug after
+19990826	Scanning every .pk3 in the directory, a small change with a large payoff
+19990828	Client-to-server bandwidth cut by 35%, and sv_maxRate to level out the LPBs
+19990901	Chasing megabytes out of the memory footprint, and finally learning perl
+19990902	On Nvidia's new geometry card with the funny name, and Apple's new G4s
+19990906	Going skeletal: the md4 format, bone-weighted but deliberately not hierarchical
+19990928	Shader, fog and animation work while the single player game is still being hashed out
+19990929	Why geometry acceleration will force almost everything into display lists
+19991001	Ten crosshairs, more packet encryption, and ranks that count ties properly
+19991004	callvote arrives, with a thirty-second timeout and three votes per level
+19991005	General purpose flood protection, stalling commands rather than dropping them
+19991007	serverTime made strictly increasing across levels, and a Mac byte-order fix
+19991011	cgame cvars all gain a cg_ prefix, and explosions collapse into single shaders
+19991014	quake3 safe, compressed jump tables, and tips for a lean dedicated server
+19991017	The next release will be the demo, plus an iBook far too slow to play it
+19991023	Robert Duffy hired full time for tools, and sv_pure on by default
+19991101	Deferred client media loading, so a joining player no longer hitches the game
+19991102	Teamplay rules adjusted: less machinegun damage, always a full load of ammo
+19991103	Reward medals, humiliation, and respawn times spread to break up patterns
+19991105	A pre-allocated memory manager to crutch up the Mac, and no native DLLs if pure
+19991109	A pass of spawn, timing and demo playback fixes
+19991111	Working around an Apple input queue issue, and no dynamic lights on Riva 128
+19991113	CD key authorization finished, and awards drawn over people's heads
+19991114	The demo test is built, and should go up in a couple of hours
+19991115	r_vertexlight becomes force-single-pass, plus a go-fast-and-look-ugly config
+19991116	Explaining flood protection and deferred models: you died before it hitched
+19991118	The Mac version ships, and why the boxes will not reach stores together
+19991119	The Linux version slips a day, and every compiler optimization tested for 5%
+19991121	Two NAT clients on one server, and the not-telefragging bug
+19991122	mkdir research. Ahhhh — and a rough outline of what comes next
+19991212	Wanted: an independent, vendor-neutral OpenGL conformance watchdog
+19991215	Anna Kang founds Fountainhead, and a honeymoon with a workstation shipped along
+19991221	The Quake 1 source is the Christmas present; the Q3 game code slips
+19991225	How to keep cheat-free games running after a GPL source release
+19991229	A week of playing on a 28.8 modem, and hard advice for everyone else on one
+19991230	A pointer to an existing anti-cheat proxy for QuakeWorld
+20000223	A public notice to QuakeLives: abide by the GPL, or release the code and stop
+20000224	Wrecking someone's development machine is no more defensible than breaking in
+20000307	Virtualized video card memory is The Right Thing, argued at full length
+20000327	Seumas McNally, and a yardstick to measure yourself by: "I hope I can make it"
+20000406	Laughing out loud at Jim Blinn, and the dawning suspicion of becoming him
+20000429	The case for sixteen-bit floating point color throughout the graphics pipeline
+20000508	The Quake 1 QuakeC source goes up under the GPL
+20000509	And the Quake 1 utilities follow
+20000514	An amateur rocket launch, and the relief of software: run it again, with a breakpoint
+20000517	A paper evaluation of the newest cards, marketing silliness included
+20000601	An ultimatum over making DOOM, and the retaliation that followed
+20010222	The GeForce 3 is fantastic, the first real bar-raising since the Voodoo 2
+20011116	Where a legitimate driver optimization ends and benchmark cheating begins
+20011221	The Quake 2 source goes GPL, cheating arguments and all
+20020211	Writing Radeon 8500 support for Doom, and contrasting ATI with Nvidia
+20020315	A shadow volume paper from Nvidia, carrying his own old discovery notes
+20020625	The Parhelia will run Doom, but it is not performance competitive
+20020627	An apology to Matrox, and a commitment to an OpenGL 2.0 renderer for Doom
+20030129	NV30 against R300, and why the apples-to-apples comparison flatters ATI
+20030207	A machinima music video on MTV, and the popping artifacts he can't stop seeing
+20041231	Back after years away: Armadillo Aerospace, and why the Q3 source is still held
+20050527	Learning J2ME on a cell phone, and why it might be the right place to start
+20060502	Orcs & Elves, and the odd economics of mobile games on overpowered hardware
+20071102	On Rage, and the moment it stopped being possible to understand every part
+20071108	Orcs & Elves on the DS: four megs, fixed point, and a cart that should have been bigger
+20090326	Wolfenstein 3D Classic, and the frustration of arriving late to the iPhone
+20090427	Doom Classic reaches beta testers, with notes on the recovered sound and music
+20090527	The same Doom Classic progress report, duplicated in the surviving archive
+20091103	Doom Classic finally ships, after a year of schedule collisions
+20101026	RAGE on iOS: a technology demo, not the full game, and a very large download

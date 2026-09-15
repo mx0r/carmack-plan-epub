@@ -1,0 +1,64 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  EPUBCHECK_VERSION: '5.1.0'
+  ARTIFACT: dist/carmack-plan.epub
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Install librsvg (renders the cover)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends librsvg2-bin
+
+      - name: Build
+        run: python3 build_epub.py
+
+      - name: Structural checks
+        run: python3 validate_epub.py "$ARTIFACT"
+
+      - name: epubcheck
+        run: |
+          curl -fsSL -o epubcheck.zip \
+            "https://github.com/w3c/epubcheck/releases/download/v${EPUBCHECK_VERSION}/epubcheck-${EPUBCHECK_VERSION}.zip"
+          unzip -q epubcheck.zip
+          java -jar "epubcheck-${EPUBCHECK_VERSION}/epubcheck.jar" "$ARTIFACT"
+
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: carmack-plan-epub
+          path: ${{ env.ARTIFACT }}
+          if-no-files-found: error
+
+      - name: Publish release
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" "$ARTIFACT" \
+              --title "$GITHUB_REF_NAME" --generate-notes \
+            || gh release upload "$GITHUB_REF_NAME" "$ARTIFACT" --clobber
