@@ -151,3 +151,10 @@ the text available.
 Everything written for this edition — the two scripts, the CI workflow, the 394
 per-entry summaries and the year introductions — is MIT licensed. See
 [`LICENSE`](LICENSE), which sets out that split explicitly.
+
+---
+
+<p align="center"><sub>
+Built by Miro Hudak, with the help of 🤖 Claude — the typesetting pipeline, the
+per-entry summaries and this README included.
+</sub></p>
