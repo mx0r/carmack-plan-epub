@@ -795,16 +795,15 @@ def write(base: str, name: str, text: str) -> None:
 
 ABOUT = """<section class="plate" epub:type="preface">
 <h1 class="page-title">About this book</h1>
-<p>Before blogs, before social media, Unix carried a small courtesy: any user
-could leave a plain text file called <span class="mono">.plan</span> in their
-home directory, and anyone on the internet could read it by running
-<span class="mono">finger</span> against their address. It was meant for
-&#8220;back at 3pm&#8221; notes.</p>
-<p>From 1996 onward, John Carmack used his as a working notebook. What began as
-terse Quake changelogs &#8212; a line per bug fixed, a line per thing still
-broken &#8212; turned into something closer to a lab notebook: rendering
-research, teardowns of new 3D cards, arguments about drivers, and notes on the
-approaches he threw away.</p>
+<p>A <span class="mono">.plan</span> was a plain text file you left in your
+home directory. Anyone on the internet could read it by running
+<span class="mono">finger</span> against your address. Most people used theirs
+for &#8220;back at 3pm&#8221; notes. This was how you told people what you were
+doing, before there were blogs.</p>
+<p>John Carmack used his as a working notebook from 1996 on. The early entries
+are Quake changelogs: a line per bug fixed, a line per thing still broken.
+The later ones run to rendering research, teardowns of new 3D cards, arguments
+about drivers, and the approaches he tried and threw away.</p>
 <p>This edition collects every surviving entry, in order, chaptered by year.</p>
 <h1 class="page-title" style="margin-top:2.4em">A note on the text</h1>
 <p>The entries are reproduced verbatim, typos and all. Two typographic
@@ -815,8 +814,8 @@ face, so they wrap to your page and your chosen text size.</p>
 monospace, because their line breaks and alignment carry meaning. Where such a
 line is too long for the page it wraps with a hanging indent rather than
 running off the edge.</p>
-<p>The italic line beneath each date is editorial &#8212; a one&#8209;line note on
-what that entry covers, added for this edition. Everything else is his.</p>
+<p>The italic line beneath each date was written for this edition. It says what
+that entry covers. Nothing else on these pages is ours.</p>
 </section>"""
 
 WHO = """<section class="plate" epub:type="preface">
