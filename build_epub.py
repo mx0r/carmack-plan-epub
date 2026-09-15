@@ -705,11 +705,20 @@ def build() -> None:
     spine.append("colophon.xhtml")
 
     # navigation
-    write(BUILD, "nav.xhtml", build_nav(toc))
+    back: list[tuple[str, str]] = []
+    licence = font_license_page()
+    if licence:
+        write(BUILD, "font-license.xhtml",
+              page("Font licence", licence, cls="plate", etype="backmatter"))
+        files.append(("font-license.xhtml", "application/xhtml+xml", ""))
+        spine.append("font-license.xhtml")
+        back.append(("Font licence", "font-license.xhtml"))
+
+    write(BUILD, "nav.xhtml", build_nav(toc, back))
     files.append(("nav.xhtml", "application/xhtml+xml", "nav"))
     spine.append("nav.xhtml")          # referenced by the toc landmark
     nonlinear.add("nav.xhtml")
-    write(BUILD, "toc.ncx", build_ncx(toc))
+    write(BUILD, "toc.ncx", build_ncx(toc, back))
     files.append(("toc.ncx", "application/x-dtbncx+xml", ""))
 
     write(BUILD, "style.css", CSS)
@@ -768,7 +777,8 @@ what that entry covers, added for this edition. Everything else is his.</p>
 COLOPHON = """<section class="plate" epub:type="colophon">
 <h1 class="page-title">Colophon</h1>
 <p>Set in Iowan Old Style, with Fira Code for all monospaced text. Fira Code is
-used under the SIL Open Font License 1.1.</p>
+used under the SIL Open Font License 1.1, reproduced in full at the end of this
+book.</p>
 <p>Text from the day&#8209;by&#8209;day <span class="mono">.plan</span> archive at
 <span class="mono">github.com/ESWAT/john-carmack-plan-archive</span>, which
 mirrors the original collection at
@@ -778,7 +788,22 @@ only typesetting and the editorial summary lines.</p>
 </section>"""
 
 
-def build_nav(toc) -> str:
+def font_license_page() -> str | None:
+    """The OFL requires its text to accompany any copy that bundles the fonts."""
+    path = os.path.join(HERE, "fonts", "OFL.txt")
+    if not os.path.exists(path):
+        print("  ! fonts/OFL.txt missing; omitting the licence page", file=sys.stderr)
+        return None
+    text = open(path, encoding="utf-8").read().rstrip()
+    lines = "".join(f"<span>{esc(l) or '&#160;'}</span>" for l in text.split("\n"))
+    return (f'<section class="plate">'
+            f'<h1 class="page-title">Font licence</h1>'
+            f'<p class="note">Fira Code is embedded in this book and used under '
+            f'the terms reproduced below.</p>'
+            f'<pre class="verbatim">{lines}</pre></section>')
+
+
+def build_nav(toc, back=()) -> str:
     rows = ['<nav epub:type="toc" id="toc"><h1 class="page-title">Contents</h1><ol>']
     rows.append('<li><a href="about.xhtml">About this book</a></li>')
     for year, links in toc:
@@ -788,6 +813,8 @@ def build_nav(toc) -> str:
             rows.append(f'<li><a href="{href}">{esc(entry.short_date)}</a></li>')
         rows.append("</ol></li>")
     rows.append('<li><a href="colophon.xhtml">Colophon</a></li>')
+    for label, href in back:
+        rows.append(f'<li><a href="{href}">{esc(label)}</a></li>')
     rows.append("</ol></nav>")
     first_year = toc[0][1][0][1].split("#")[0] if toc and toc[0][1] else "colophon.xhtml"
     rows.append('<nav epub:type="landmarks" hidden="hidden"><ol>'
@@ -799,7 +826,7 @@ def build_nav(toc) -> str:
     return page("Contents", "\n".join(rows), cls="plate", etype="frontmatter")
 
 
-def build_ncx(toc) -> str:
+def build_ncx(toc, back=()) -> str:
     out = ['<?xml version="1.0" encoding="utf-8"?>',
            '<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">',
            f'<head><meta name="dtb:uid" content="{BOOK_ID}"/>',
@@ -827,6 +854,8 @@ def build_ncx(toc) -> str:
                    f"<navLabel><text>{year}</text></navLabel>"
                    f'<content src="{first}"/>{kids}</navPoint>')
     out.append(nav_point("Colophon", "colophon.xhtml"))
+    for label, href in back:
+        out.append(nav_point(label, href))
     out.append("</navMap></ncx>")
     return "".join(out)
 

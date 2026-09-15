@@ -22,11 +22,12 @@ then Palatino, all of which Apple Books already provides.
 >
 > This Font Software is licensed under the SIL Open Font License, Version 1.1.
 
-Taken from the fonts' own `name` table (IDs 0 and 13). The OFL permits redistribution,
-including bundling inside a document, provided the licence travels with the files.
+The full licence text is in [`OFL.txt`](OFL.txt), copied verbatim from the
+[Fira Code repository](https://github.com/tonsky/FiraCode/blob/master/LICENSE).
 
-**Still to add:** the full `OFL.txt`, copied from the
-[Fira Code repository](https://github.com/tonsky/FiraCode/blob/master/LICENSE), should
-sit in this directory. It was not committed because the machine that assembled this
-repository was offline; the notice above is transcribed from the font binaries rather
-than from the canonical licence file.
+The OFL permits redistribution, including bundling inside a document, provided the
+copyright notice and the licence travel with the files. The built EPUB embeds both
+fonts, so `build_epub.py` reads `OFL.txt` at build time and renders it as a "Font
+licence" page in the back matter — the licence ships inside the book as well as beside
+it here. If the file is missing the build still succeeds, but it warns and omits that
+page, which would leave the EPUB out of compliance.
