@@ -802,10 +802,9 @@ home directory, and anyone on the internet could read it by running
 &#8220;back at 3pm&#8221; notes.</p>
 <p>From 1996 onward, John Carmack used his as a working notebook. What began as
 terse Quake changelogs &#8212; a line per bug fixed, a line per thing still
-broken &#8212; grew into the most detailed public record we have of how a
-first&#8209;rate engine programmer actually thinks: rendering research,
-hardware autopsies, arguments about drivers and platforms, and the occasional
-flat admission that an approach was wrong and had been thrown away.</p>
+broken &#8212; turned into something closer to a lab notebook: rendering
+research, teardowns of new 3D cards, arguments about drivers, and notes on the
+approaches he threw away.</p>
 <p>This edition collects every surviving entry, in order, chaptered by year.</p>
 <h1 class="page-title" style="margin-top:2.4em">A note on the text</h1>
 <p>The entries are reproduced verbatim, typos and all. Two typographic
@@ -822,29 +821,26 @@ what that entry covers, added for this edition. Everything else is his.</p>
 
 WHO = """<section class="plate" epub:type="preface">
 <h1 class="page-title">Who wrote this</h1>
-<p>John Carmack is the programmer who made 3D games run on ordinary computers.
-At id Software, which he co&#8209;founded in 1991, he wrote the engines behind
-Wolfenstein&#160;3D, DOOM and Quake &#8212; work that took real&#8209;time 3D
-graphics off expensive workstations and onto the PC in someone&#8217;s
-bedroom.</p>
-<p>He also gave most of it away. The source code to nearly every engine he wrote
-was released publicly once the games had had their commercial run. The same
-instinct runs through these notes: he sets down what he tried, what it cost, and
-what turned out to be wrong.</p>
-<p>The entries here run from 1996 to 2010, from Quake through to the mobile ports
-at the end of his time at id. What came afterwards is not in them.</p>
+<p>John Carmack co&#8209;founded id Software in 1991 and wrote the engines for
+Wolfenstein&#160;3D, DOOM and Quake. Before those, real&#8209;time 3D needed a
+workstation. After them a PC would do.</p>
+<p>He has released most of that code. Wolfenstein, DOOM, Quake, Quake&#160;II,
+Quake&#160;III and DOOM&#160;3 are all public under the GPL.</p>
+<p>The notes here run from 1996 to 2010, from Quake to the end of his time at
+id. He wrote them for other programmers, and he leaves the dead ends in.</p>
 <ol class="life">
-<li><span class="yr">1990</span>Commander Keen<span class="sub">Smooth scrolling on PC hardware that was not supposed to manage it</span></li>
-<li><span class="yr">1992</span>Wolfenstein 3D</li>
-<li><span class="yr">1993</span>DOOM</li>
-<li class="in-book"><span class="yr">1996</span>Quake<span class="sub">True 3D, and the client/server networking that made internet play work</span></li>
-<li class="in-book"><span class="yr">1997</span>Quake II</li>
-<li class="in-book"><span class="yr">1999</span>Quake III Arena</li>
-<li class="in-book"><span class="yr">2000</span>Founded Armadillo Aerospace<span class="sub">A rocket company he engineered for alongside the day job</span></li>
-<li class="in-book"><span class="yr">2004</span>DOOM 3</li>
-<li class="in-book"><span class="yr">2010</span>The last entry in this book<span class="sub">After fourteen years the notebook stops, on &#8220;it works, and it was probably the right decision&#8221;</span></li>
-<li><span class="yr">2011</span>Rage</li>
-<li><span class="yr">2013</span>Became chief technology officer at Oculus<span class="sub">Through the first wave of consumer virtual reality</span></li>
+<li><span class="yr">1990</span>Commander Keen<span class="sub">Adaptive tile refresh, which got smooth scrolling out of EGA hardware</span></li>
+<li><span class="yr">1992</span>Wolfenstein 3D<span class="sub">Ray casting, texture&#8209;mapped walls</span></li>
+<li><span class="yr">1993</span>DOOM<span class="sub">BSP trees, varying floor and ceiling heights, networked deathmatch</span></li>
+<li><span class="yr">1994</span>DOOM II</li>
+<li class="in-book"><span class="yr">1996</span>Quake<span class="sub">Polygonal 3D, and client/server networking</span></li>
+<li class="in-book"><span class="yr">1997</span>Quake II<span class="sub">OpenGL hardware acceleration, coloured lighting, game code in a C DLL</span></li>
+<li class="in-book"><span class="yr">1999</span>Quake III Arena<span class="sub">Curved surfaces, a shader system, mods compiled to a portable virtual machine</span></li>
+<li class="in-book"><span class="yr">2000</span>Founded Armadillo Aerospace<span class="sub">Liquid&#8209;fuel rocket engines, built alongside the id work</span></li>
+<li class="in-book"><span class="yr">2004</span>DOOM 3<span class="sub">Unified per&#8209;pixel lighting, stencil shadow volumes</span></li>
+<li class="in-book"><span class="yr">2010</span>The last entry in this book<span class="sub">It ends on &#8220;it works, and it was probably the right decision&#8221;</span></li>
+<li><span class="yr">2011</span>Rage<span class="sub">Megatexture: unique texture data across a whole world, streamed from disk</span></li>
+<li><span class="yr">2013</span>Became chief technology officer at Oculus<span class="sub">The Rift, and the first consumer VR headsets</span></li>
 <li><span class="yr">2022</span>Founded Keen Technologies, to work on artificial general intelligence</li>
 </ol>
 <p class="note">The years set in bold are the years this book covers.</p>
