@@ -829,8 +829,7 @@ def build_opf(files, spine, has_cover: bool, count: int) -> str:
     refs = "".join(f'<itemref idref="{ids[n]}"/>' for n in spine)
     cover_meta = '<meta name="cover" content="cover-image"/>' if has_cover else ""
     return f"""<?xml version="1.0" encoding="utf-8"?>
-<package xmlns="{OPF_NS}" version="3.0" unique-identifier="bookid"
-         xml:lang="en" prefix="dcterms: http://purl.org/dc/terms/">
+<package xmlns="{OPF_NS}" version="3.0" unique-identifier="bookid" xml:lang="en">
   <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
     <dc:identifier id="bookid">{BOOK_ID}</dc:identifier>
     <dc:title>{esc(TITLE)}</dc:title>
