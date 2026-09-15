@@ -164,6 +164,26 @@
     margin-top:.9rem;
   }
 
+  /* a career reads as dates, and the gold run marks the years in the book */
+  .life{list-style:none;margin:1.9rem 0 0;padding:0;max-width:44rem}
+  .life li{
+    display:grid;
+    grid-template-columns:3.6rem 1fr;
+    gap:0 1.4rem;
+    align-items:baseline;
+    padding:.34rem 0 .34rem 1.1rem;
+    border-left:1px solid var(--rule);
+  }
+  .life .yr{font-family:var(--mono);font-size:.8rem;letter-spacing:.04em;color:var(--dim)}
+  .life .ev{font-size:1rem}
+  .life .ev small{display:block;font-size:.86rem;color:var(--dim);line-height:1.45}
+  .life li.in-book{border-left-color:var(--gold)}
+  .life li.in-book .yr{color:var(--gold)}
+  .legend{
+    font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;
+    color:var(--dim);margin:1.1rem 0 0;padding-left:1.1rem;
+  }
+
   /* devices, not steps: the distinction that matters is where you read */
   .devices{display:grid;grid-template-columns:repeat(auto-fit,minmax(12.5rem,1fr));gap:2.4rem 2.2rem}
   .devices h3{
@@ -248,8 +268,7 @@
           meant for &ldquo;back at 3pm&rdquo; notes.
         </p>
         <p>
-          From 1996 onward, John Carmack &mdash; who wrote DOOM and Quake &mdash; used
-          his as a working notebook. It begins as terse bug lists, a line for each
+          From 1996 onward, John Carmack used his as a working notebook. It begins as terse bug lists, a line for each
           thing fixed and a line for each thing still broken, and grows into the most
           detailed public record we have of how a first-rate programmer actually
           thinks.
@@ -261,6 +280,38 @@
         </p>
       </div>
     </div>
+  </section>
+
+  <section>
+    <h2>Who wrote it</h2>
+    <p>
+      John Carmack is the programmer who made 3D games run on ordinary computers.
+      At id Software he wrote the engines behind Wolfenstein&nbsp;3D, DOOM and Quake,
+      work that took real-time 3D graphics off expensive workstations and onto the
+      PC sitting in someone's bedroom.
+    </p>
+    <p>
+      He also gave most of it away. The source code to nearly every engine he wrote
+      was released publicly once the games had had their commercial run &mdash; which
+      is why DOOM now famously runs on cash registers, calculators and pregnancy
+      tests. The same instinct runs through these notes: he explains what he tried,
+      what it cost, and what turned out to be wrong.
+    </p>
+    <ol class="life">
+      <li><span class="yr">1990</span><span class="ev">Commander Keen<small>Smooth scrolling on PC hardware that was not supposed to manage it</small></span></li>
+      <li><span class="yr">1992</span><span class="ev">Wolfenstein 3D</span></li>
+      <li><span class="yr">1993</span><span class="ev">DOOM</span></li>
+      <li class="in-book"><span class="yr">1996</span><span class="ev">Quake<small>True 3D, and the client/server networking that made internet play work</small></span></li>
+      <li class="in-book"><span class="yr">1997</span><span class="ev">Quake II</span></li>
+      <li class="in-book"><span class="yr">1999</span><span class="ev">Quake III Arena</span></li>
+      <li class="in-book"><span class="yr">2000</span><span class="ev">Armadillo Aerospace<small>A rocket company he founded and engineered for, alongside the day job</small></span></li>
+      <li class="in-book"><span class="yr">2004</span><span class="ev">DOOM 3</span></li>
+      <li class="in-book"><span class="yr">2010</span><span class="ev">The last .plan entry<small>After fourteen years the notebook stops, on &ldquo;it works, and it was probably the right decision&rdquo;</small></span></li>
+      <li><span class="yr">2011</span><span class="ev">Rage</span></li>
+      <li><span class="yr">2013</span><span class="ev">Chief technology officer at Oculus<small>Through the first wave of consumer virtual reality</small></span></li>
+      <li><span class="yr">2022</span><span class="ev">Founded Keen Technologies, working on artificial general intelligence</span></li>
+    </ol>
+    <p class="legend">The years in gold are the years this book covers.</p>
   </section>
 
   <section>
