@@ -540,6 +540,42 @@ h1.page-title {
 }
 .note { font-size: 0.9em; color: #6f6a61; color: var(--muted); }
 
+/* ---- career list: inline-block rather than grid, for older readers ---- */
+ol.life {
+  list-style: none;
+  margin: 1.5em 0 0.4em 0;
+  padding: 0;
+  text-align: left;
+  -webkit-hyphens: none; hyphens: none;
+}
+ol.life li {
+  margin: 0;
+  padding: 0.34em 0 0.34em 0.85em;
+  border-left: 1px solid #cfc9bd;
+  border-left: 1px solid var(--rule);
+  line-height: 1.4;
+}
+ol.life li.in-book { border-left-color: #1c1b19; border-left-color: var(--ink); }
+ol.life .yr {
+  font-family: "PlanMono", "SF Mono", "Menlo", monospace;
+  -webkit-font-feature-settings: "liga" 0, "calt" 0;
+  font-feature-settings: "liga" 0, "calt" 0;
+  font-size: 0.72em;
+  letter-spacing: 0.08em;
+  display: inline-block;
+  width: 4.2em;
+  color: #6f6a61;
+  color: var(--muted);
+}
+ol.life li.in-book .yr { font-weight: bold; color: #1c1b19; color: var(--ink); }
+ol.life .sub {
+  display: block;
+  margin-left: 4.2em;
+  font-size: 0.86em;
+  color: #6f6a61;
+  color: var(--muted);
+}
+
 /* ---- cover ---- */
 body.cover { margin: 0; padding: 0; text-align: center; }
 body.cover img { max-width: 100%; max-height: 100%; }
@@ -552,6 +588,10 @@ nav#toc a { border: 0; }
 
 @media (prefers-color-scheme: dark) {
   :root { --ink:#e7e3dc; --muted:#a09a8f; --faint:#8b857a; --rule:#4b463f; }
+  ol.life li { border-left-color: #4b463f; }
+  ol.life li.in-book { border-left-color: #e7e3dc; }
+  ol.life .yr, ol.life .sub { color: #a09a8f; }
+  ol.life li.in-book .yr { color: #e7e3dc; }
   body { color: #e7e3dc; color: var(--ink); }
   a { border-bottom-color: #4b463f; }
   h2.date { color: #a09a8f; border-bottom-color: #4b463f; }
@@ -682,6 +722,12 @@ def build() -> None:
     files.append(("about.xhtml", "application/xhtml+xml", ""))
     spine.append("about.xhtml")
 
+    # who wrote this
+    write(BUILD, "who.xhtml", page("Who wrote this", WHO, cls="plate",
+                                   etype="frontmatter"))
+    files.append(("who.xhtml", "application/xhtml+xml", ""))
+    spine.append("who.xhtml")
+
     # year chapters
     toc: list[tuple[int, list[tuple[Entry, str]]]] = []
     for year in years:
@@ -774,6 +820,36 @@ running off the edge.</p>
 what that entry covers, added for this edition. Everything else is his.</p>
 </section>"""
 
+WHO = """<section class="plate" epub:type="preface">
+<h1 class="page-title">Who wrote this</h1>
+<p>John Carmack is the programmer who made 3D games run on ordinary computers.
+At id Software, which he co&#8209;founded in 1991, he wrote the engines behind
+Wolfenstein&#160;3D, DOOM and Quake &#8212; work that took real&#8209;time 3D
+graphics off expensive workstations and onto the PC in someone&#8217;s
+bedroom.</p>
+<p>He also gave most of it away. The source code to nearly every engine he wrote
+was released publicly once the games had had their commercial run. The same
+instinct runs through these notes: he sets down what he tried, what it cost, and
+what turned out to be wrong.</p>
+<p>The entries here run from 1996 to 2010, from Quake through to the mobile ports
+at the end of his time at id. What came afterwards is not in them.</p>
+<ol class="life">
+<li><span class="yr">1990</span>Commander Keen<span class="sub">Smooth scrolling on PC hardware that was not supposed to manage it</span></li>
+<li><span class="yr">1992</span>Wolfenstein 3D</li>
+<li><span class="yr">1993</span>DOOM</li>
+<li class="in-book"><span class="yr">1996</span>Quake<span class="sub">True 3D, and the client/server networking that made internet play work</span></li>
+<li class="in-book"><span class="yr">1997</span>Quake II</li>
+<li class="in-book"><span class="yr">1999</span>Quake III Arena</li>
+<li class="in-book"><span class="yr">2000</span>Founded Armadillo Aerospace<span class="sub">A rocket company he engineered for alongside the day job</span></li>
+<li class="in-book"><span class="yr">2004</span>DOOM 3</li>
+<li class="in-book"><span class="yr">2010</span>The last entry in this book<span class="sub">After fourteen years the notebook stops, on &#8220;it works, and it was probably the right decision&#8221;</span></li>
+<li><span class="yr">2011</span>Rage</li>
+<li><span class="yr">2013</span>Became chief technology officer at Oculus<span class="sub">Through the first wave of consumer virtual reality</span></li>
+<li><span class="yr">2022</span>Founded Keen Technologies, to work on artificial general intelligence</li>
+</ol>
+<p class="note">The years set in bold are the years this book covers.</p>
+</section>"""
+
 COLOPHON = """<section class="plate" epub:type="colophon">
 <h1 class="page-title">Colophon</h1>
 <p>Set in Iowan Old Style, with Fira Code for all monospaced text. Fira Code is
@@ -806,6 +882,7 @@ def font_license_page() -> str | None:
 def build_nav(toc, back=()) -> str:
     rows = ['<nav epub:type="toc" id="toc"><h1 class="page-title">Contents</h1><ol>']
     rows.append('<li><a href="about.xhtml">About this book</a></li>')
+    rows.append('<li><a href="who.xhtml">Who wrote this</a></li>')
     for year, links in toc:
         first = links[0][1].split("#")[0] if links else "colophon.xhtml"
         rows.append(f'<li><a href="{first}">{year}</a><ol>')
@@ -844,6 +921,7 @@ def build_ncx(toc, back=()) -> str:
                 f'<content src="{src}"/>{children}</navPoint>')
 
     out.append(nav_point("About this book", "about.xhtml"))
+    out.append(nav_point("Who wrote this", "who.xhtml"))
     for year, links in toc:
         first = links[0][1].split("#")[0] if links else "colophon.xhtml"
         # reserve the parent's play order before its children

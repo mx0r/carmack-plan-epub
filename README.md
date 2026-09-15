@@ -34,6 +34,8 @@ thinks.
   says so plainly. Everything else is his.
 - **Typography suited to the material.** Prose reflows in a serif face; changelogs,
   tables and code stay verbatim in monospace.
+- **A short introduction to Carmack**, with a career timeline whose rule marks the
+  years the book covers, for readers who did not live through Quake.
 
 <p align="center">
   <img src="docs/sample-page.png" alt="Sample page showing reflowed prose and a verbatim CPU table" width="620">
