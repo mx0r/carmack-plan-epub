@@ -19,6 +19,7 @@ import re
 import shutil
 import subprocess
 import sys
+import uuid
 import zipfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -40,7 +41,10 @@ def find_font(name: str) -> str:
 
 OPF_NS = "http://www.idpf.org/2007/opf"
 
-BOOK_ID = "urn:uuid:8f3b1c42-5d9e-4a77-b0c1-carmackplan1996"
+# Derived from the project URL: a valid UUID, and stable across rebuilds so
+# readers treat a new build as the same book rather than a different one.
+BOOK_ID = "urn:uuid:" + str(uuid.uuid5(
+    uuid.NAMESPACE_URL, "https://github.com/mx0r/carmack-plan-epub"))
 TITLE = ".plan"
 SUBTITLE = "The collected .plan files of John Carmack, 1996–2010"
 AUTHOR = "John Carmack"
@@ -641,6 +645,7 @@ def build() -> None:
 
     files: list[tuple[str, str, str]] = []   # (name, media-type, properties)
     spine: list[str] = []
+    nonlinear: set[str] = set()              # in the spine, but not in reading order
 
     has_cover = build_cover(len(entries))
     if has_cover:
@@ -692,6 +697,8 @@ def build() -> None:
     # navigation
     write(BUILD, "nav.xhtml", build_nav(toc))
     files.append(("nav.xhtml", "application/xhtml+xml", "nav"))
+    spine.append("nav.xhtml")          # referenced by the toc landmark
+    nonlinear.add("nav.xhtml")
     write(BUILD, "toc.ncx", build_ncx(toc))
     files.append(("toc.ncx", "application/x-dtbncx+xml", ""))
 
@@ -702,7 +709,8 @@ def build() -> None:
         shutil.copyfile(find_font(fname), os.path.join(BUILD, "fonts", fname))
         files.append((f"fonts/{fname}", "font/ttf", ""))
 
-    write(BUILD, "content.opf", build_opf(files, spine, has_cover, len(entries)))
+    write(BUILD, "content.opf",
+          build_opf(files, spine, nonlinear, has_cover, len(entries)))
 
     zip_epub()
     print(f"  entries      {len(entries)}  ({years[0]}–{years[-1]})")
@@ -812,7 +820,7 @@ def build_ncx(toc) -> str:
     return "".join(out)
 
 
-def build_opf(files, spine, has_cover: bool, count: int) -> str:
+def build_opf(files, spine, nonlinear, has_cover: bool, count: int) -> str:
     stamp = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     items = []
     for i, (name, mtype, props) in enumerate(files):
@@ -826,7 +834,9 @@ def build_opf(files, spine, has_cover: bool, count: int) -> str:
     ids = {name: ("cover-image" if name == "cover.png" else
                   "ncx" if name == "toc.ncx" else f"i{i}")
            for i, (name, _, _) in enumerate(files)}
-    refs = "".join(f'<itemref idref="{ids[n]}"/>' for n in spine)
+    refs = "".join(
+        f'<itemref idref="{ids[n]}"' + (' linear="no"' if n in nonlinear else '') + "/>"
+        for n in spine)
     cover_meta = '<meta name="cover" content="cover-image"/>' if has_cover else ""
     return f"""<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="{OPF_NS}" version="3.0" unique-identifier="bookid" xml:lang="en">

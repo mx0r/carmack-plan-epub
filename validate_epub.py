@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import re
 import sys
+import uuid
 import zipfile
 from xml.etree import ElementTree as ET
 
@@ -62,6 +63,13 @@ def main(path: str) -> int:
     check("dc:identifier present",
           pkg.find(f"{{{OPF}}}metadata/{{{DC}}}identifier") is not None)
     check("dc:title present", pkg.find(f"{{{OPF}}}metadata/{{{DC}}}title") is not None)
+    ident = (pkg.findtext(f"{{{OPF}}}metadata/{{{DC}}}identifier") or "").strip()
+    if ident.startswith("urn:uuid:"):
+        try:
+            uuid.UUID(ident[len("urn:uuid:"):]); valid_uuid = True
+        except ValueError:
+            valid_uuid = False
+        check("dc:identifier is a well-formed UUID (epubcheck OPF-085)", valid_uuid)
     check("dcterms:modified present",
           any(m.get("property") == "dcterms:modified" for m in pkg.iter(f"{{{OPF}}}meta")))
 
@@ -105,9 +113,15 @@ def main(path: str) -> int:
           all(terms.get(t, 0) > 0 for t in ("frontmatter", "bodymatter", "backmatter")))
 
     print("\nnavigation")
-    nav = z.read("OEBPS/nav.xhtml").decode("utf-8")
+    # only <a href> inside <nav>; the document's own <link rel=stylesheet> is not a link
+    nav_root = ET.fromstring(z.read("OEBPS/nav.xhtml"))
+    links = []
+    for nav_el in nav_root.iter(f"{{{XHTML}}}nav"):
+        for a in nav_el.iter(f"{{{XHTML}}}a"):
+            target, _, frag = (a.get("href") or "").partition("#")
+            if target:
+                links.append((target, frag))
     broken = []
-    links = re.findall(r'href="([^"#]+)(?:#([^"]+))?"', nav)
     for target, frag in links:
         if target not in names:
             broken.append(target)
@@ -116,6 +130,12 @@ def main(path: str) -> int:
     check(f"all {len(links)} nav links resolve to a file and anchor", not broken)
     if broken:
         print("        broken:", broken[:8])
+    id_for = {i.get("href"): i.get("id") for i in items}
+    spine_files = {h for h, i in id_for.items() if i in set(refs)}
+    off_spine = sorted({t for t, _ in links} - spine_files)
+    check("every nav target is a spine item (epubcheck RSC-011)", not off_spine)
+    if off_spine:
+        print("        not in spine:", off_spine)
     if "toc.ncx" in names:
         ncx = ET.fromstring(z.read("OEBPS/toc.ncx"))
         orders = [int(p.get("playOrder")) for p in ncx.iter(f"{{{NCX}}}navPoint")]
