@@ -155,6 +155,6 @@ per-entry summaries and the year introductions — is MIT licensed. See
 ---
 
 <p align="center"><sub>
-Built by Miro Hudak, with the help of 🤖 Claude — the typesetting pipeline, the
-per-entry summaries and this README included.
+Made with the help of 🤖 Claude — the typesetting pipeline, the per-entry
+summaries and this README included.
 </sub></p>
