@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.plan — the collected .plan files of John Carmack, 1996–2010</title>
+<meta name="description" content="394 entries from John Carmack's .plan files, typeset as a free EPUB you can read on an iPad, a Kindle or a computer.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23141310'/%3E%3Crect x='9' y='8' width='14' height='16' fill='%23c9a227'/%3E%3C/svg%3E">
+<meta property="og:title" content=".plan — John Carmack, 1996–2010">
+<meta property="og:description" content="394 entries from John Carmack's .plan files, typeset as a free EPUB.">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://mx0r.github.io/carmack-plan-epub/">
+<meta property="og:image" content="https://mx0r.github.io/carmack-plan-epub/cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root{
+    --ink:#141310;
+    --paper:#f2ede1;
+    --dim:#8e8574;
+    --gold:#c9a227;
+    --rule:#3a352c;
+    --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+    --serif:"Iowan Old Style",Charter,Palatino,"Palatino Linotype","Book Antiqua",Georgia,serif;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+
+  html{-webkit-text-size-adjust:100%}
+
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--serif);
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{
+    max-width:52rem;
+    margin:0 auto;
+    padding:0 1.5rem;
+  }
+
+  /* the cover's hairline frame, carried onto the page */
+  .frame{
+    border:1px solid var(--rule);
+    margin:1.25rem;
+    padding:clamp(2rem,6vw,4.5rem) 0;
+  }
+
+  a{color:inherit}
+  a:focus-visible,.btn:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+  }
+
+  /* ---------- hero: a finger session ---------- */
+
+  .session{
+    font-family:var(--mono);
+    font-size:clamp(.78rem,2.3vw,.9rem);
+    line-height:1.75;
+    color:var(--dim);
+    margin:0 0 2.5rem;
+    animation:rise .5s ease-out both;
+  }
+  .session .prompt{color:var(--paper)}
+  .session .prompt::before{content:"$ ";color:var(--gold)}
+  .session dl{margin:.35rem 0 0;display:grid;grid-template-columns:auto 1fr;gap:0 1.5rem}
+  .session dt{color:var(--dim)}
+  .session dd{margin:0;color:var(--paper)}
+  .session .field{margin-top:.6rem;color:var(--dim)}
+
+  .title{
+    font-family:var(--mono);
+    font-weight:400;
+    font-size:clamp(3.4rem,15vw,7.5rem);
+    line-height:.95;
+    letter-spacing:.02em;
+    margin:.4rem 0 0;
+    color:var(--paper);
+    animation:rise .5s .06s ease-out both;
+  }
+  .title .cursor{
+    display:inline-block;
+    width:.5em;height:.72em;
+    background:var(--gold);
+    vertical-align:-.03em;
+    margin-left:.12em;
+    animation:blink 1.15s steps(1,end) infinite;
+  }
+
+  .standfirst{
+    font-size:clamp(1.05rem,2.6vw,1.3rem);
+    line-height:1.5;
+    max-width:34ch;
+    margin:1.4rem 0 0;
+    color:var(--paper);
+    animation:rise .5s .12s ease-out both;
+  }
+  .standfirst em{font-style:italic;color:var(--dim)}
+
+  /* ---------- the one job ---------- */
+
+  .get{margin:2.6rem 0 0;animation:rise .5s .18s ease-out both}
+  .btn{
+    display:inline-block;
+    background:var(--gold);
+    color:var(--ink);
+    font-family:var(--mono);
+    font-size:1rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    text-decoration:none;
+    padding:1rem 1.9rem;
+    border:0;
+    transition:transform .12s ease,filter .12s ease;
+  }
+  .btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+  .meta{
+    font-family:var(--mono);
+    font-size:.78rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--dim);
+    margin:.9rem 0 0;
+  }
+  .meta a{color:var(--dim)}
+
+  /* ---------- sections ---------- */
+
+  section{border-top:1px solid var(--rule);margin-top:clamp(3rem,8vw,5.5rem);padding-top:clamp(2.2rem,5vw,3.2rem)}
+
+  h2{
+    font-family:var(--mono);
+    font-size:.78rem;
+    font-weight:400;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--dim);
+    margin:0 0 1.6rem;
+  }
+
+  p{margin:0 0 1.1rem;max-width:64ch}
+  code{font-family:var(--mono);font-size:.88em;color:var(--gold)}
+  p:last-child{margin-bottom:0}
+  .dim{color:var(--dim)}
+
+  .about{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:clamp(2rem,5vw,3.5rem);align-items:start}
+  .about img{width:100%;height:auto;display:block;border:1px solid var(--rule)}
+
+  /* a page from the book, shown as a sheet of paper */
+  .sheet{margin:0;width:fit-content;max-width:100%}
+  .sheet .paper{background:#fff;padding:.5rem;max-width:44rem}
+  .sheet img{width:100%;height:auto;display:block}
+  .sheet figcaption{
+    font-family:var(--mono);
+    font-size:.74rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--dim);
+    margin-top:.9rem;
+  }
+
+  /* devices, not steps: the distinction that matters is where you read */
+  .devices{display:grid;grid-template-columns:repeat(auto-fit,minmax(12.5rem,1fr));gap:2.4rem 2.2rem}
+  .devices h3{
+    font-family:var(--mono);
+    font-size:.82rem;
+    font-weight:400;
+    letter-spacing:.08em;
+    color:var(--gold);
+    margin:0 0 .6rem;
+  }
+  .devices p{font-size:.95rem;color:var(--dim);max-width:none}
+
+  footer{
+    border-top:1px solid var(--rule);
+    margin-top:clamp(3rem,8vw,5.5rem);
+    padding-top:2rem;
+    font-family:var(--mono);
+    font-size:.78rem;
+    line-height:1.9;
+    color:var(--dim);
+  }
+  footer a{color:var(--paper);text-decoration:none;border-bottom:1px solid var(--rule)}
+  footer a:hover{border-bottom-color:var(--gold)}
+  footer .cols{display:flex;flex-wrap:wrap;gap:.6rem 2.5rem}
+
+  @keyframes blink{0%,65%{opacity:1}65.01%,100%{opacity:0}}
+  @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .title .cursor{opacity:1}
+  }
+
+  @media (max-width:40rem){
+    .frame{margin:.5rem;padding:2.5rem 0}
+    .about{grid-template-columns:1fr}
+    .about img{max-width:13rem}
+    .session dl{grid-template-columns:1fr;gap:0}
+    .btn{display:block;text-align:center}
+  }
+</style>
+</head>
+<body>
+<div class="frame">
+<div class="wrap">
+
+  <header>
+    <div class="session">
+      <div class="prompt">finger johnc@idsoftware.com</div>
+      <dl>
+        <dt>Login:</dt><dd>johnc</dd>
+        <dt>Name:</dt><dd>John Carmack</dd>
+      </dl>
+      <div class="field">Plan:</div>
+    </div>
+
+    <h1 class="title">.plan<span class="cursor" aria-hidden="true"></span></h1>
+
+    <p class="standfirst">
+      Fourteen years of a programmer's working notes, typeset as a book.
+      <em>1996&ndash;2010.</em>
+    </p>
+
+    <div class="get">
+      <a class="btn" href="https://github.com/mx0r/carmack-plan-epub/releases/latest/download/carmack-plan.epub">Download the book</a>
+      <p class="meta">
+        EPUB &middot; about 640&nbsp;KB &middot; free &middot;
+        <a href="https://github.com/mx0r/carmack-plan-epub/releases">all versions</a>
+      </p>
+    </div>
+  </header>
+
+  <section>
+    <h2>What this is</h2>
+    <div class="about">
+      <img src="cover.png" alt="The book's cover: the words dot plan in white monospace on a near-black field, with a gold cursor block.">
+      <div>
+        <p>
+          Before blogs, Unix carried a small courtesy. You left a plain text file
+          called <code>.plan</code> in your home directory, and anyone on the internet
+          could read it by running <code>finger</code> against your address. It was
+          meant for &ldquo;back at 3pm&rdquo; notes.
+        </p>
+        <p>
+          From 1996 onward, John Carmack &mdash; who wrote DOOM and Quake &mdash; used
+          his as a working notebook. It begins as terse bug lists, a line for each
+          thing fixed and a line for each thing still broken, and grows into the most
+          detailed public record we have of how a first-rate programmer actually
+          thinks.
+        </p>
+        <p class="dim">
+          All 394 surviving entries are collected here in order, one chapter per year.
+          Each day carries a short note saying what it covers, so you can dip in
+          anywhere rather than reading front to back.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>A page from it</h2>
+    <figure class="sheet">
+      <div class="paper"><img src="sample-page.png" alt="A page from the book: a dated heading, a one-line summary in italics, a table of processor timings in monospace, and paragraphs of prose in a serif face."></div>
+      <figcaption>25 June 1997 &mdash; sixteen processors, and the price of big iron</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>How to read it</h2>
+    <div class="devices">
+      <div>
+        <h3>iPad or iPhone</h3>
+        <p>
+          Open this page on the device and tap Download. Choose <em>Open in
+          Books</em> when asked. It appears in your library and syncs to your other
+          Apple devices.
+        </p>
+      </div>
+      <div>
+        <h3>Kindle</h3>
+        <p>
+          Download the file, then email it to your Send&nbsp;to&nbsp;Kindle address as
+          an attachment. Amazon converts it and it shows up on the device.
+        </p>
+      </div>
+      <div>
+        <h3>Computer</h3>
+        <p>
+          Apple Books on a Mac opens it directly. On Windows or Linux, use a free
+          reader such as Calibre or Thorium.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="cols">
+      <span>Text by John Carmack.</span>
+      <span>Archive from <a href="https://github.com/ESWAT/john-carmack-plan-archive">ESWAT</a> and <a href="http://floodyberry.com/carmack/plan.html">floodyberry</a>.</span>
+      <span>Built from <a href="https://github.com/mx0r/carmack-plan-epub">source on GitHub</a>.</span>
+    </div>
+  </footer>
+
+</div>
+</div>
+</body>
+</html>

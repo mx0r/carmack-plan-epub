@@ -9,7 +9,8 @@
 394 entries, typeset as a book: chapters are years, subchapters are dates, and every
 entry carries a one-line editorial note saying what it covers.
 
-**[Download the latest release &rarr;](https://github.com/mx0r/carmack-plan-epub/releases/latest)**
+**[Read the download page &rarr;](https://mx0r.github.io/carmack-plan-epub/)** &nbsp;·&nbsp;
+[Download the EPUB directly](https://github.com/mx0r/carmack-plan-epub/releases/latest/download/carmack-plan.epub)
 
 ---
 
